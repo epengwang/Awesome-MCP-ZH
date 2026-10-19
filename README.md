@@ -867,6 +867,7 @@ MCP 客户端是 AI 的“操作台”，以下是几个热门选择：
 | [hushvert/mcp](https://github.com/hushvert/mcp) | 面向 AI 智能体的文件转换服务：通过 hushvert 托管 API 完成 Office 文档转 PDF、PDF 转 Word、文档互转（Markdown/HTML/EPUB/LaTeX）与音视频转码；浏览器可本地完成的转换会引导使用免费本地引擎而不计费。 | 社区实现, TypeScript 开发 📇, 云服务 ☁️, 文件/文档格式转换 (convert_file/convert_poll/list_formats/check_usage)。 |
 | [anymd](https://github.com/SylphxAI/anymd) | 把任意文件转成干净的 Markdown 供 AI 使用：PDF、Word、PowerPoint、Excel/CSV、EPUB、HTML/网页 URL、图片（可选 OCR）与音视频元数据/字幕；提供 read、search、inspect 三个工具，PDF 表格与双栏阅读顺序可还原，并带页码引用锚点。原名 pdf-reader-mcp。 | 社区实现, Rust 开发 🦀, 本地运行 🏠, 跨平台 🍎🪟🐧, 无需 API Key, `npx -y @sylphx/anymd` |
 | [chrisryugj/kordoc](https://github.com/chrisryugj/kordoc) | 韩国文档解析库、CLI 与 MCP 服务器：将 HWP 3.x/5.x、HWPX、HWPML 以及 PDF、DOCX、XLSX、PPTX 和图片转换为 Markdown 与结构化数据，并支持表单填写、保留格式的文档修改、文档对比和公文样式 HWPX 生成。 | 社区实现, TypeScript 开发 📇, 本地运行 🏠, MIT, `npx -y kordoc setup`。 |
+| [PDFLean](https://github.com/epengwang/pdflean-mcp) | 为 AI 智能体提供 17 个 PDF 工具的托管远程 MCP 服务器：PDF/A 与 PDF/UA 校验、签名验证、文本与表单/发票字段提取、个人敏感信息扫描、合并、拆分、压缩、OCR、Office 文档转换、数字签名与真涂黑脱敏。 | 厂商官方服务（PDFLean 团队）, 云服务 ☁️, 远程 Streamable HTTP 端点 https://mcp.pdflean.com/mcp，OAuth 2.1 鉴权（动态注册 + PKCE），无需本地安装；工具调用按 API 额度计量，状态与用量查询免费；已上架 MCP 官方注册表（com.pdflean/mcp）。 |
 
 ---
 
