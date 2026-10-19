@@ -1,0 +1,40 @@
+name: insert-pdflean-row
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  insert:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Insert PDFLean row after kordoc row
+        run: |
+          python3 << 'PYEOF'
+          row = "| [PDFLean](https://github.com/epengwang/pdflean-mcp) | 为 AI 智能体提供 17 个 PDF 工具的托管远程 MCP 服务器：PDF/A 与 PDF/UA 校验、签名验证、文本与表单/发票字段提取、个人敏感信息扫描、合并、拆分、压缩、OCR、Office 文档转换、数字签名与真涂黑脱敏。 | 厂商官方服务（PDFLean 团队）, 云服务 ☁️, 远程 Streamable HTTP 端点 https://mcp.pdflean.com/mcp，OAuth 2.1 鉴权（动态注册 + PKCE），无需本地安装；工具调用按 API 额度计量，状态与用量查询免费；已上架 MCP 官方注册表（com.pdflean/mcp）。 |"
+          with open("README.md", encoding="utf-8") as f:
+              content = f.read()
+          if "pdflean-mcp" in content:
+              raise SystemExit("PDFLean already present, aborting")
+          lines = content.split("\n")
+          for i, line in enumerate(lines):
+              if "chrisryugj/kordoc" in line:
+                  lines.insert(i + 1, row)
+                  break
+          else:
+              raise SystemExit("kordoc row not found")
+          with open("README.md", "w", encoding="utf-8") as f:
+              f.write("\n".join(lines))
+          print("inserted after kordoc row")
+          PYEOF
+      - name: Commit README change
+        run: |
+          git config user.name "epengwang"
+          git config user.email "epengwang@users.noreply.github.com"
+          git add README.md
+          git commit -m "在文件系统与存储表格末尾添加 PDFLean"
+          git push
